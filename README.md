@@ -80,15 +80,10 @@ print(success.fmt("This is a success!"), .{});
 
 ## Installation
 
-1. Add the dependency to the `build.zig.zon` of your project.
+1. Run this command.
 
    ```zig
-   .dependencies = .{
-       .chameleon = .{
-           .url = "https://github.com/tr1ckydev/chameleon/archive/3d7fdd61598edecacd2c53c5ecff76a79abb8661.tar.gz",
-           .hash = "1220018d65a2105db410846019d23fd9966ace9f5cacc2fdec5c1ad4275009b94b70",
-       },
-   },
+    zig fetch --save https://github.com/okobenoko/chameleon-fork/archive/fac0fdcfd930026db51b093eaf871a4a20eec134.tar.gz 
    ```
 
 2. Add the dependency and module to your `build.zig`.
@@ -96,7 +91,7 @@ print(success.fmt("This is a success!"), .{});
    ```zig
    const cham_dep = b.dependency("chameleon", .{});
    const cham_mod = cham_dep.module("chameleon");
-   exe.addModule("chameleon", cham_mod);
+   exe.root_module.addImport("chameleon", cham_mod);
    ```
 
 3. Import it inside your project.
